@@ -1,0 +1,62 @@
+:root {
+  --bg-light: #f0f0f3;
+  --bg-dark: #1a1a1d;
+  --glass-light: rgba(255, 255, 255, 0.25);
+  --glass-dark: rgba(0, 0, 0, 0.25);
+  --accent: #00ffe7;
+  --transition-speed: 0.4s;
+}
+
+body {
+  background-color: var(--bg-light);
+  transition: background-color var(--transition-speed) ease;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+}
+
+.theme-toggle-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  backdrop-filter: blur(10px);
+  background: var(--glass-light);
+  border-radius: 50px;
+  box-shadow: 0 0 10px var(--accent);
+  transition: background var(--transition-speed);
+}
+
+body.dark-mode .theme-toggle {
+  background: var(--glass-dark);
+}
+
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  transition: transform var(--transition-speed);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+input:checked + .slider {
+  transform: translateX(26px);
+}
